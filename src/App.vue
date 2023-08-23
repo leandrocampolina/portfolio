@@ -1,32 +1,104 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="black"
+      elevate-on-scroll
+      dark
+    >
+      <div class="d-flex align-center">
+        <!-- lugar para colocar o nome -->
+        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+
+        <v-toolbar-title>Leandro Campolina</v-toolbar-title>
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        text
+      >
+        <span class="mr-2">Home</span>
+      </v-btn>
+      <v-btn
+        text
+      >
+        <span class="mr-2">About</span>
+      </v-btn>
+      <v-btn
+        text
+      >
+        <span class="mr-2">Projects</span>
+      </v-btn>
+      <v-btn
+        text
+      >
+        <span class="mr-2">Contact</span>
+      </v-btn>
+    </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item>
+            <v-btn
+              text
+            >
+              <span class="mr-2">Home</span>
+            </v-btn>
+          </v-list-item>
+
+          <v-list-item>
+            <v-btn
+              text
+            >
+              <span class="mr-2">About</span>
+            </v-btn>
+          </v-list-item>
+
+          <v-list-item>
+            <v-btn
+              text
+            >
+              <span class="mr-2">Projects</span>
+            </v-btn>
+          </v-list-item>
+
+          <v-list-item>
+            <v-btn
+              text
+            >
+              <span class="mr-2">Contact</span>
+            </v-btn>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-nav {
-  padding: 30px;
-}
+export default {
+  name: 'App',
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  data: () => ({
+    drawer: false,
+    group: null,
+  }),
+};
+</script>
